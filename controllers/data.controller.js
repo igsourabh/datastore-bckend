@@ -18,3 +18,18 @@ export const createData = async (req, res) => {
     });
   }
 };
+
+export const getData = async (req, res) => {
+  try {
+    const data = await DataModel.find();
+    res.status(201).json({
+      success: true,
+      data: data,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
